@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Very Important Proposal</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec;
+            text-align: center;
+        }
+
+        #card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 { color: #d81b60; font-size: 1.8rem; margin-bottom: 20px; }
+        p { color: #ad1457; font-size: 1.1rem; min-height: 50px; }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            transform: scale(1);
+        }
+
+        #yesBtn:hover { transform: scale(1.1); background-color: #ff758f; }
+
+        #noBtn {
+            background-color: #eeeeee;
+            color: #757575;
+        }
+
+        .gif-container img {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="card">
+        <div class="gif-container">
+            <img id="mainGif" src="https://media.tenor.com/iij57UylJ7oAAAAi/forever-valentine-love.gif" alt="Cute gif">
+        </div>
+        <h1 id="mainText">Will you be my Valentine?</h1>
+        <p id="subText">I promise it'll be the best one yet!</p>
+        
+        <div class="buttons" id="btnGroup">
+            <button id="yesBtn" onclick="accepted()">Yes</button>
+            <button id="noBtn" onclick="rejected()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const cheesyLines = [
+          "Are you sure? I’ll bring snacks AND hold your hand at the movies 🍿🤝",
+          "What if I promise to always be on your side… even in silly arguments 🛡️😌",
+          "I’ll let you have the last slice of pizza. Yes, even the big one 🍕❤️",
+          "I’ll laugh at all your jokes… even the really bad ones 😂",
+          "I’ll cook you dinner (or confidently order the best takeout) 🍜😄",
+          "I’ll be your personal heater when it’s cold ❄️🔥",
+          "I’ll share my fries with you… and that’s true love 🍟💖",
+          "I’ll always save you the comfy spot on the couch 🛋️🥰",
+          "I’ll hype you up like you’re my favorite person… because you are 📣❤️",
+          "I’ll be your plus-one for everything, forever 👫✨",
+          "I’ll send you good-morning and good-night texts every day 🌅🌙",
+          "I’ll listen to your stories even when I’ve heard them before 😌💞",
+          "I’ll choose you in every lifetime ♾️❤️",
+          "I’ll be the reason you smile at your phone 📱🥰",
+          "I’ll love you more than Wi-Fi… and that’s saying something 📶💘",
+          "I’m running out of ideas… but not out of feelings 😌",
+          "So before I overthink this any more…",
+          "Will you be my Valentine? 🌹❤️"
+        ];
+
+
+        let lineIndex = 0;
+        const mainText = document.getElementById('mainText');
+        const subText = document.getElementById('subText');
+        const yesBtn = document.getElementById('yesBtn');
+
+        function rejected() {
+            // Update the text with a cheesy line
+            if (lineIndex < cheesyLines.length) {
+                subText.innerText = cheesyLines[lineIndex];
+                lineIndex++;
+                
+                // Make the 'Yes' button grow slightly each time she says no
+                let currentScale = 1 + (lineIndex * 0.1);
+                yesBtn.style.transform = `scale(${currentScale})`;
+            } else {
+                subText.innerText = "Okay, I'm out of lines, but I'm still not taking No for an answer! ❤️";
+            }
+        }
+
+        function accepted() {
+            // The final reveal
+            document.getElementById('btnGroup').style.display = 'none';
+            mainText.innerText = "YAY! ❤️";
+            subText.innerHTML = "I knew you couldn't resist!<br><br><strong>Now, go look in the drawer!</strong>";
+            document.getElementById('mainGif').src = "https://media1.tenor.com/m/e7S1Y510BSEAAAAC/bubu-dudu-valentine%27s-day-happy-valentine%27s-day-bubu.gif";
+            document.body.style.backgroundColor = "#ff4d6d";
+        }
+    </script>
+</body>
+</html>
