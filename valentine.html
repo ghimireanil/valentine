@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Very Important Proposal</title>
+    <title>Click for surprise</title>
     <style>
     body {
         display: flex;
@@ -60,7 +60,7 @@
         background-color: #ff4d6d;
         color: white;
         transform: scale(1);
-        z-index: 2; /* Ensures Yes button grows over No button if they touch */
+        z-index: 2; 
     }
 
     #yesBtn:hover { transform: scale(1.1); background-color: #ff758f; }
@@ -75,20 +75,19 @@
         width: 150px;
         margin-bottom: 10px;
     }
-        /* Update the #subText to handle multi-line endings beautifully */
+
     #subText { 
         color: #ad1457; 
         font-size: 1.1rem; 
         min-height: 80px; 
-        margin: 20px 0; /* Increased margin for better spacing */
-        display: block; /* Changed from flex to block for final screen text flow */
-        line-height: 1.6; /* Improves readability of the instructions */
+        margin: 20px 0; 
+        display: block; 
+        line-height: 1.6; 
     }
     
-    /* Add this to ensure the final message doesn't look cramped */
     #mainText {
         color: #d81b60;
-        font-size: 2.2rem; /* Made 'YAY' a bit bigger for impact */
+        font-size: 2.2rem; 
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -128,7 +127,7 @@
           "I’ll love you more than Wi-Fi… and that’s saying something 📶💘",
           "I’m running out of ideas… but not out of feelings 😌",
           "So before I overthink this any more…",
-          "Are you sure you are thinking or pretending to think? 🌹❤️"
+          "Are you thinking or pretending to think? 🌹❤️"
         ];
 
 
@@ -167,10 +166,7 @@
           // Smooth transition for the background
           document.body.style.transition = "background-color 0.5s ease";
           document.body.style.backgroundColor = "#ff4d6d";
-          
-          // Make the card text white for better contrast on the red background if you prefer
-          // mainText.style.color = "white";
-          // subText.style.color = "white";
+        
       }
     </script>
 </body>
