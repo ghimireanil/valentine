@@ -5,64 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Very Important Proposal</title>
     <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fce4ec;
-            text-align: center;
-        }
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fce4ec;
+        text-align: center;
+    }
 
-        #card {
-            background: white;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
-            max-width: 400px;
-            width: 90%;
-        }
+    #card {
+        background: white;
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+        max-width: 400px;
+        width: 90%;
+    }
 
-        h1 { color: #d81b60; font-size: 1.8rem; margin-bottom: 20px; }
-        p { color: #ad1457; font-size: 1.1rem; min-height: 50px; }
+    h1 { color: #d81b60; font-size: 1.8rem; margin-bottom: 20px; }
+    
+    /* Increased min-height to give the text its own 'zone' */
+    p { 
+        color: #ad1457; 
+        font-size: 1.1rem; 
+        min-height: 80px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
+    /* Increased margin-top to 60px for more breathing room */
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 60px; 
+        position: relative;
+    }
 
-        button {
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    button {
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-        #yesBtn {
-            background-color: #ff4d6d;
-            color: white;
-            transform: scale(1);
-        }
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+        transform: scale(1);
+        z-index: 2; /* Ensures Yes button grows over No button if they touch */
+    }
 
-        #yesBtn:hover { transform: scale(1.1); background-color: #ff758f; }
+    #yesBtn:hover { transform: scale(1.1); background-color: #ff758f; }
 
-        #noBtn {
-            background-color: #eeeeee;
-            color: #757575;
-        }
+    #noBtn {
+        background-color: #eeeeee;
+        color: #757575;
+        z-index: 1;
+    }
 
-        .gif-container img {
-            width: 150px;
-            margin-bottom: 10px;
-        }
-    </style>
+    .gif-container img {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+        /* Update the #subText to handle multi-line endings beautifully */
+    #subText { 
+        color: #ad1457; 
+        font-size: 1.1rem; 
+        min-height: 80px; 
+        margin: 20px 0; /* Increased margin for better spacing */
+        display: block; /* Changed from flex to block for final screen text flow */
+        line-height: 1.6; /* Improves readability of the instructions */
+    }
+    
+    /* Add this to ensure the final message doesn't look cramped */
+    #mainText {
+        color: #d81b60;
+        font-size: 2.2rem; /* Made 'YAY' a bit bigger for impact */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
 </head>
 <body>
 
@@ -98,7 +128,7 @@
           "I’ll love you more than Wi-Fi… and that’s saying something 📶💘",
           "I’m running out of ideas… but not out of feelings 😌",
           "So before I overthink this any more…",
-          "Will you be my Valentine? 🌹❤️"
+          "Are you sure you are thinking or pretending to think? 🌹❤️"
         ];
 
 
@@ -122,13 +152,26 @@
         }
 
         function accepted() {
-            // The final reveal
-            document.getElementById('btnGroup').style.display = 'none';
-            mainText.innerText = "YAY! ❤️";
-            subText.innerHTML = "I knew you couldn't resist!<br><br><strong>Now, find your gift!</strong>";
-            document.getElementById('mainGif').src = "https://media1.tenor.com/m/e7S1Y510BSEAAAAC/bubu-dudu-valentine%27s-day-happy-valentine%27s-day-bubu.gif";
-            document.body.style.backgroundColor = "#ff4d6d";
-        }
+          // Hide the buttons completely
+          document.getElementById('btnGroup').style.display = 'none';
+          
+          // Update the main heading
+          mainText.innerText = "YAY! ❤️";
+          
+          // Update the subtext with clean line breaks
+          subText.innerHTML = "I knew you couldn't resist!<br><br><span style='font-size: 1.4rem; font-weight: bold; color: #d81b60;'>Now, go find your gift!</span>";
+          
+          // Update the GIF to the celebration one
+          document.getElementById('mainGif').src = "https://media1.tenor.com/m/e7S1Y510BSEAAAAC/bubu-dudu-valentine%27s-day-happy-valentine%27s-day-bubu.gif";
+          
+          // Smooth transition for the background
+          document.body.style.transition = "background-color 0.5s ease";
+          document.body.style.backgroundColor = "#ff4d6d";
+          
+          // Make the card text white for better contrast on the red background if you prefer
+          // mainText.style.color = "white";
+          // subText.style.color = "white";
+      }
     </script>
 </body>
 </html>
